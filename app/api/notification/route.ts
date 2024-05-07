@@ -32,11 +32,12 @@ export const POST = async (req: NextRequest) => {
       en: "this is a tets essage",
     },
     included_segments: [ALL_USERS],
-    large_icon: "@mipmap/ic_launcher",
     android_group_message: "You have $[notif_count] new messages",
     target_channel: "push",
     android_group: "test",
-    small_icon: "@mipmap/ic_launcher",
+    // Icon to show (created with android studio) this is themed in case you were wondering how to make themed icons
+    large_icon: "@drawable/ic_stat_name",
+    small_icon: "@drawable/ic_stat_name",
     include_aliases: {
       // Send to users with the following id
       external_id: ["6ca972c1-0365-4d6e-8935-00b2bd6dbc6d"],
