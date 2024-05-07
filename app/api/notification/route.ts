@@ -5,9 +5,19 @@ export const POST = async (req: NextRequest) => {
   const ALL_USERS = "Total Subscriptions";
   const TEST_USERS = "Test Subscription";
 
+  if (
+    !process.env.APP_ID ||
+    !process.env.USER_AUTH_KEY ||
+    !process.env.REST_API_KEY
+  ) {
+    return new Response("APP_ID, not found", {
+      status: 500,
+    });
+  }
+
   const configuration = OneSignal.createConfiguration({
-    userAuthKey: "02e63d11-5675-44bc-9449-54cc27917d61",
-    restApiKey: "ZGVlNWEyMDItOTBjYS00ZDI1LWFjOTMtNjVhNWM0YmZmZGU0",
+    userAuthKey: process.env.USER_AUTH_KEY,
+    restApiKey: process.env.REST_API_KEY,
   });
 
   const client = new OneSignal.DefaultApi(configuration);
@@ -16,7 +26,7 @@ export const POST = async (req: NextRequest) => {
   onesignal.app_id;
 
   const notification: OneSignal.Notification = {
-    app_id: "02e63d11-5675-44bc-9449-54cc27917d61",
+    app_id: process.env.APP_ID,
     headings: { en: "Hello from Backend" },
     contents: {
       en: "this is a tets essage",
