@@ -1,7 +1,7 @@
 import { NextRequest } from "next/server";
 import * as OneSignal from "@onesignal/node-onesignal";
 
-export const POST = async (req: NextRequest) => {
+export const POST = async (_: NextRequest) => {
   const ALL_USERS = "Total Subscriptions";
   const TEST_USERS = "Test Subscription";
 
@@ -29,7 +29,7 @@ export const POST = async (req: NextRequest) => {
     app_id: process.env.APP_ID,
     headings: { en: "Hello from Backend" },
     contents: {
-      en: "this is a tets essage",
+      en: "this is a test essage",
     },
     included_segments: [ALL_USERS],
     android_group_message: "You have $[notif_count] new messages",
